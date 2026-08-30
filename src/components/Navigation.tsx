@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Menu, X, Building2, BrickWall, PaintRoller, Home } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const navItems = [
   { name: 'Stavby', href: '#stavby', icon: Building2 },
@@ -19,13 +20,19 @@ export default function Navigation() {
       {/* --- DESKTOP SIDEBAR --- */}
       <aside className="hidden md:flex flex-col w-64 h-screen fixed left-0 top-0 bg-brand-dark border-r border-brand-silver/20">
         <div className="p-6">
-          <h1 className="text-2xl font-bold text-brand-silver tracking-wider">
-            YURIJ <span className="text-brand-blue">STAV</span>
-          </h1>
-          <p className="text-xs text-brand-silver/60 mt-1 uppercase tracking-widest">Group s.r.o.</p>
+          <Link href="/" className="block">
+            <Image 
+              src="/logo.jpeg" 
+              alt="Yurij Stav Group Logo" 
+              width={208} 
+              height={65} 
+              className="w-full h-auto object-contain"
+              priority // Načte logo prioritně bez zpoždění
+            />
+          </Link>
         </div>
         
-        <nav className="flex-1 px-4 mt-8 space-y-2">
+        <nav className="flex-1 px-4 mt-4 space-y-2">
           {navItems.map((item) => (
             <Link
               key={item.name}
@@ -42,9 +49,16 @@ export default function Navigation() {
       {/* --- MOBILE HEADER & MENU --- */}
       <div className="md:hidden">
         <header className="flex items-center justify-between p-4 bg-brand-dark border-b border-brand-silver/20 fixed top-0 w-full z-50">
-          <h1 className="text-xl font-bold text-brand-silver tracking-wider">
-            YURIJ <span className="text-brand-blue">STAV</span>
-          </h1>
+          <Link href="/">
+            <Image 
+              src="/logo.jpeg" 
+              alt="Yurij Stav Group Logo" 
+              width={140} 
+              height={44} 
+              className="w-auto h-10 object-contain"
+              priority
+            />
+          </Link>
           <button 
             onClick={() => setIsOpen(!isOpen)}
             className="text-brand-silver hover:text-white"
@@ -55,7 +69,7 @@ export default function Navigation() {
 
         {/* Mobile Dropdown */}
         {isOpen && (
-          <nav className="fixed top-[60px] left-0 w-full bg-brand-dark border-b border-brand-silver/20 p-4 space-y-2 z-40 shadow-xl">
+          <nav className="fixed top-[73px] left-0 w-full bg-brand-dark border-b border-brand-silver/20 p-4 space-y-2 z-40 shadow-xl">
             {navItems.map((item) => (
               <Link
                 key={item.name}
