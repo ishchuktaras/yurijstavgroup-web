@@ -1,3 +1,5 @@
+// src/components/ContactForm.tsx
+
 'use client'
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -29,7 +31,6 @@ const formSchema = z.object({
   jmeno: z.string().min(2, { message: "Jméno musí mít alespoň 2 znaky." }),
   email: z.string().email({ message: "Zadejte platný e-mail, abychom vám mohli odpovědět." }),
   telefon: z.string().min(9, { message: "Zadejte platné telefonní číslo." }),
-  // Změněno na .min(1) pro kompatibilitu
   sluzba: z.string().min(1, { message: "Prosím, vyberte o jakou službu máte zájem." }),
   zprava: z.string().min(10, { message: "Poptávka by měla obsahovat alespoň 10 znaků." }),
 })
@@ -41,6 +42,7 @@ export default function ContactForm() {
       jmeno: "",
       email: "",
       telefon: "",
+      sluzba: "", // Přidána výchozí hodnota pro Select
       zprava: "",
     },
   })
@@ -155,7 +157,8 @@ export default function ContactForm() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-brand-silver">O jakou službu máte zájem?</FormLabel>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      {/* Změněno defaultValue na value */}
+                      <Select onValueChange={field.onChange} value={field.value}>
                         <FormControl>
                           <SelectTrigger className="bg-brand-bg border-brand-silver/20 text-white">
                             <SelectValue placeholder="Vyberte typ práce" />
@@ -181,9 +184,10 @@ export default function ContactForm() {
                     <FormItem>
                       <FormLabel className="text-brand-silver">Detaily poptávky</FormLabel>
                       <FormControl>
+                        {/* Změněno min-h-[120px] na min-h-30 */}
                         <Textarea 
                           placeholder="Přibližte nám svůj projekt (lokalita, termín, rozsah prací)..." 
-                          className="min-h-[120px] bg-brand-bg border-brand-silver/20 text-white" 
+                          className="min-h-30 bg-brand-bg border-brand-silver/20 text-white" 
                           {...field} 
                         />
                       </FormControl>
