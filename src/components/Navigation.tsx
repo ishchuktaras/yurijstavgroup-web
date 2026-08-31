@@ -1,89 +1,95 @@
+// src/components/Navigation.tsx
+
 'use client'
 
 import { useState } from 'react'
-import { Menu, X, Building2, BrickWall, PaintRoller, Home } from 'lucide-react'
+import { Menu, X, Users, ImageIcon, Wrench, MessageSquareQuote } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 
 const navItems = [
-  { name: 'Stavby', href: '#stavby', icon: Building2 },
-  { name: 'Rekonstrukce', href: '#rekonstrukce', icon: BrickWall },
-  { name: 'Fasády', href: '#fasady', icon: PaintRoller },
-  { name: 'Střechy', href: '#strechy', icon: Home },
+  { name: 'O nás', href: '#o-nas', icon: Users },
+  { name: 'Služby', href: '#sluzby', icon: Wrench },
+  { name: 'Portfolio', href: '#portfolio', icon: ImageIcon },
+  { name: 'Recenze', href: '#recenze', icon: MessageSquareQuote },
 ]
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <>
-      {/* --- DESKTOP SIDEBAR --- */}
-      <aside className="hidden md:flex flex-col w-64 h-screen fixed left-0 top-0 bg-brand-dark border-r border-brand-silver/20">
-        <div className="p-6">
-          <Link href="/" className="block">
-            <Image 
-              src="/logo.jpeg" 
-              alt="Yurij Stav Group Logo" 
-              width={208} 
-              height={65} 
-              className="w-full h-auto object-contain"
-              priority // Načte logo prioritně bez zpoždění
-            />
-          </Link>
-        </div>
-        
-        <nav className="flex-1 px-4 mt-4 space-y-2">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="flex items-center gap-3 px-4 py-3 text-brand-silver hover:text-white hover:bg-brand-blue/10 rounded-lg transition-colors group"
-            >
-              <item.icon className="w-5 h-5 text-brand-blue group-hover:text-brand-blue-light" />
-              <span className="font-medium">{item.name}</span>
+    <header className="fixed top-0 left-0 w-full z-50 bg-black border-b border-brand-silver/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          
+          <div className="flex-shrink-0">
+            <Link href="/" className="block">
+              <Image 
+                src="/logo.jpeg" 
+                alt="Yurij Stav Group Logo" 
+                width={160} 
+                height={50} 
+                className="w-auto h-12 object-contain"
+                priority 
+              />
             </Link>
-          ))}
-        </nav>
-      </aside>
+          </div>
+          
+          <nav className="hidden md:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="flex items-center gap-2 text-brand-silver hover:text-white transition-colors group"
+              >
+                <item.icon className="w-4 h-4 text-brand-blue group-hover:text-brand-blue-light transition-colors" />
+                <span className="font-medium text-sm uppercase tracking-wider">{item.name}</span>
+              </Link>
+            ))}
+            
+            <Link
+              href="#poptavka"
+              className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue-light rounded-lg transition-all hover:scale-105"
+            >
+              Poptat služby
+            </Link>
+          </nav>
 
-      {/* --- MOBILE HEADER & MENU --- */}
-      <div className="md:hidden">
-        <header className="flex items-center justify-between p-4 bg-brand-dark border-b border-brand-silver/20 fixed top-0 w-full z-50">
-          <Link href="/">
-            <Image 
-              src="/logo.jpeg" 
-              alt="Yurij Stav Group Logo" 
-              width={140} 
-              height={44} 
-              className="w-auto h-10 object-contain"
-              priority
-            />
-          </Link>
-          <button 
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-brand-silver hover:text-white"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </header>
+          <div className="md:hidden flex items-center">
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-brand-silver hover:text-white p-2"
+            >
+              {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+            </button>
+          </div>
+        </div>
+      </div>
 
-        {/* Mobile Dropdown */}
-        {isOpen && (
-          <nav className="fixed top-[73px] left-0 w-full bg-brand-dark border-b border-brand-silver/20 p-4 space-y-2 z-40 shadow-xl">
+      {isOpen && (
+        <div className="md:hidden bg-black border-b border-brand-silver/10 shadow-2xl absolute w-full left-0 top-20">
+          <nav className="px-4 pt-2 pb-6 space-y-2">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 text-brand-silver hover:text-white hover:bg-brand-blue/10 rounded-lg"
+                className="flex items-center gap-3 px-4 py-4 text-brand-silver hover:text-white hover:bg-brand-blue/10 rounded-lg transition-colors"
               >
                 <item.icon className="w-5 h-5 text-brand-blue" />
                 <span className="font-medium">{item.name}</span>
               </Link>
             ))}
+            <Link
+              href="#poptavka"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center justify-center w-full mt-4 px-4 py-4 text-base font-bold text-white bg-brand-blue rounded-lg"
+            >
+              Poptat služby
+            </Link>
           </nav>
-        )}
-      </div>
-    </>
+        </div>
+      )}
+    </header>
   )
 }

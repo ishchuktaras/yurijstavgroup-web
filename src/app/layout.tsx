@@ -1,8 +1,10 @@
+// src/app/layout.tsx
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import Navigation from "@/components/Navigation"; // Tvoje komponenta navigace
+import Navigation from "@/components/Navigation"; 
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -73,13 +75,11 @@ export default function RootLayout({
   };
 
   return (
-    // Změna lang na "cs" je důležitá pro lokální SEO
     <html
       lang="cs" 
       className={cn("h-full", "antialiased", "scroll-smooth", geistSans.variable, geistMono.variable, inter.variable)}
     >
       <head>
-        {/* Injekce JSON-LD do hlavičky */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -87,8 +87,8 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-brand-bg text-foreground">
         <Navigation />
-        {/* md:ml-64 zajišťuje, že obsah nezačíná pod Sidebarem */}
-        <main className="flex-1 md:ml-64">
+        {/* OPRAVA: Zde jsme smazali md:ml-64 */}
+        <main className="flex-1">
           {children}
         </main>
       </body>
