@@ -68,7 +68,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Yurij Stav Group s.r.o. Všechna práva vyhrazena.
           </p>
           <p className="text-sm text-brand-silver/60">
-            Vytvořil s ❤️ <a href="https://webnamiru.site" target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue transition-colors font-medium">Taras Ishchuk</a>
+            Vytvořil:  <a href="https://webnamiru.site" target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue transition-colors font-medium">Taras Ishchuk</a>
           </p>
         </div>
       </div>

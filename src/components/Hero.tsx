@@ -12,6 +12,7 @@ export default function Hero() {
           src="/hero-bg.jpg" 
           alt="Stavební práce pozadí"
           fill
+          sizes="100vw" 
           className="object-cover opacity-50 grayscale-[50%]"
           priority
         />
