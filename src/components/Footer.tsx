@@ -12,12 +12,13 @@ export default function Footer() {
           <div className="space-y-4">
             <Link href="/" className="block">
               <Image 
-                src="/logo.jpeg" 
-                alt="Yurij Stav Group Logo" 
-                width={160} 
-                height={50} 
-                className="w-auto h-12 object-contain"
-              />
+  src="/logo.svg" 
+  alt="Yurij Stav Group Logo" 
+  width={270} 
+  height={100} 
+  className="w-auto h-14 md:h-16 object-contain invert hue-rotate-180 brightness-110"
+
+/>
             </Link>
             <p className="text-brand-silver/80 text-sm leading-relaxed">
               Váš spolehlivý partner ve stavebnictví. Od menších rekonstrukcí až po realizaci staveb na klíč. Kvalita bez kompromisů a poctivé řemeslo.

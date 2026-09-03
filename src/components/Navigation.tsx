@@ -1,9 +1,7 @@
-// src/components/Navigation.tsx
-
 'use client'
 
 import { useState } from 'react'
-import { Menu, X, Users, ImageIcon, Wrench, MessageSquareQuote } from 'lucide-react'
+import { Menu, X, Users, ImageIcon, Wrench, MessageSquareQuote, Mail } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -20,22 +18,24 @@ export default function Navigation() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-black border-b border-brand-silver/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-20 w-full">          
           
-          <div className="flex-shrink-0">
+          {/* Levý sloupec - Logo */}
+          <div className="flex-1 flex justify-start shrink-0">
             <Link href="/" className="block">
               <Image 
-                src="/logo.jpeg" 
+                src="/logo.svg" 
                 alt="Yurij Stav Group Logo" 
-                width={160} 
-                height={50} 
-                className="w-auto h-12 object-contain"
+                width={270} 
+                height={100} 
+                className="w-auto h-14 md:h-16 object-contain invert hue-rotate-180 brightness-110"
                 priority 
               />
             </Link>
           </div>
           
-          <nav className="hidden md:flex items-center space-x-8">
+          {/* Střední sloupec - Vycentrované odkazy (pouze desktop) */}
+          <nav className="hidden md:flex flex-[2] justify-center items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -46,26 +46,33 @@ export default function Navigation() {
                 <span className="font-medium text-sm uppercase tracking-wider">{item.name}</span>
               </Link>
             ))}
-            
-            <Link
-              href="#poptavka"
-              className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue-light rounded-lg transition-all hover:scale-105"
-            >
-              Poptat služby
-            </Link>
           </nav>
 
-          <div className="md:hidden flex items-center">
+          {/* Pravý sloupec - Tlačítko / Hamburger */}
+          <div className="flex-1 flex justify-end items-center">
+            {/* Tlačítko pouze pro desktop */}
+            <div className="hidden md:block">
+              <Link
+                href="#poptavka"
+                className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue-light rounded-lg transition-all hover:scale-105"
+              >
+                Poptat služby
+              </Link>
+            </div>
+
+            {/* Hamburger menu pro mobil */}
             <button 
               onClick={() => setIsOpen(!isOpen)}
-              className="text-brand-silver hover:text-white p-2"
+              className="md:hidden text-brand-silver hover:text-white p-2"
             >
               {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
             </button>
           </div>
+
         </div>
       </div>
 
+      {/* Mobilní rozbalovací menu */}
       {isOpen && (
         <div className="md:hidden bg-black border-b border-brand-silver/10 shadow-2xl absolute w-full left-0 top-20">
           <nav className="px-4 pt-2 pb-6 space-y-2">
@@ -80,12 +87,15 @@ export default function Navigation() {
                 <span className="font-medium">{item.name}</span>
               </Link>
             ))}
+            
+            {/* Nahrazené modré tlačítko za konzistentní položku "Kontakt" */}
             <Link
               href="#poptavka"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-center w-full mt-4 px-4 py-4 text-base font-bold text-white bg-brand-blue rounded-lg"
+              className="flex items-center gap-3 px-4 py-4 text-brand-silver hover:text-white hover:bg-brand-blue/10 rounded-lg transition-colors"
             >
-              Poptat služby
+              <Mail className="w-5 h-5 text-brand-blue" />
+              <span className="font-medium">Kontakt</span>
             </Link>
           </nav>
         </div>

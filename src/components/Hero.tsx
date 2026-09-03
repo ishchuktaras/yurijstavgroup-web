@@ -1,6 +1,6 @@
 // src/components/Hero.tsx
 
-import { ArrowRight, HardHat } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Hero() {
@@ -13,21 +13,17 @@ export default function Hero() {
           alt="Stavební práce pozadí"
           fill
           sizes="100vw" 
-          className="object-cover opacity-50 grayscale-[50%]"
+          className="object-cover opacity-60 grayscale-50"
           priority
+          loading="eager"
         />
         <div className="absolute inset-0 bg-linear-to-b from-brand-bg/40 via-brand-bg/70 to-brand-bg" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-dark/80 backdrop-blur-sm border border-brand-silver/20 text-brand-silver mb-8">
-          <HardHat className="w-4 h-4 text-brand-blue" />
-          <span className="text-sm font-medium tracking-wide">Yurij Stav Group s.r.o.</span>
-        </div>
-        
         <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-8 drop-shadow-lg">
           Váš spolehlivý partner <br className="hidden sm:block" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-blue-light">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-brand-blue to-brand-blue-light">
             ve stavebnictví
           </span>
         </h1>
