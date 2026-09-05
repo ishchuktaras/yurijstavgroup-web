@@ -12,13 +12,12 @@ export default function Footer() {
           <div className="space-y-4">
             <Link href="/" className="block">
               <Image 
-  src="/logo.svg" 
-  alt="Yurij Stav Group Logo" 
-  width={270} 
-  height={100} 
-  className="w-auto h-14 md:h-16 object-contain invert hue-rotate-180 brightness-110"
-
-/>
+                src="/logo.svg" 
+                alt="Yurij Stav Group Logo" 
+                width={270} 
+                height={100} 
+                className="w-auto h-14 md:h-16 object-contain invert hue-rotate-180 brightness-110"
+              />
             </Link>
             <p className="text-brand-silver/80 text-sm leading-relaxed">
               Váš spolehlivý partner ve stavebnictví. Od menších rekonstrukcí až po realizaci staveb na klíč. Kvalita bez kompromisů a poctivé řemeslo.
@@ -40,16 +39,16 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-4 uppercase tracking-wider text-sm">Kontakt</h4>
             <ul className="space-y-3 text-sm text-brand-silver/80">
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 text-brand-blue mt-0.5" />
+                <Phone className="w-4 h-4 text-brand-blue mt-0.5 shrink-0" />
                 <span>+420 608 084 721</span>
               </li>
               <li className="flex items-start gap-3">
-                <Mail className="w-4 h-4 text-brand-blue mt-0.5" />
+                <Mail className="w-4 h-4 text-brand-blue mt-0.5 shrink-0" />
                 <span>Yurijstavgroup@gmail.com</span>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-brand-blue mt-0.5" />
-                <span>Fryčovická 458<br/>Praha - Letňany, 199 00</span>
+                <MapPin className="w-4 h-4 text-brand-blue mt-0.5 shrink-0" />
+                <span>Fryčovická 458<br/>Letňany, 199 00 Praha</span>
               </li>
             </ul>
           </div>
@@ -66,7 +65,7 @@ export default function Footer() {
 
         <div className="border-t border-brand-silver/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <p className="text-sm text-brand-silver/60">
-            &copy; {new Date().getFullYear()} Yurij Stav Group s.r.o. Všechna práva vyhrazena.
+            &copy; {new Date().getFullYear()} Yurij Stav Group s.r.o. | IČO: 24091812, DIČ: CZ24091812<br className="md:hidden"/> Všechna práva vyhrazena.
           </p>
           <p className="text-sm text-brand-silver/60">
             Vytvořil:  <a href="https://webnamiru.site" target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue transition-colors font-medium">Taras Ishchuk</a>
