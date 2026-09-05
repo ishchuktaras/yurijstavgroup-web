@@ -25,7 +25,7 @@ export default function GDPRPage() {
 
         <section>
           <h2 className="text-xl font-bold text-white mb-4">4. Vaše práva</h2>
-          <p>Máte právo na přístup ke svým osobním údajům, právo na jejich opravu nebo výmaz, popřípadě omezení zpracování. Pokud máte jakýkoliv dotaz ohledně zpracování vašich dat, kontaktujte nás na e-mailu Yurijstavgroup@gmail.com.</p>
+          <p>Máte právo na přístup ke svým osobním údajům, právo na jejich opravu nebo výmaz, popřípadě omezení zpracování. Pokud máte jakýkoliv dotaz ohledně zpracování vašich dat, kontaktujte nás na e-mailu <strong>info@yurijstavgroup.cz</strong>.</p>
         </section>
       </div>
     </div>

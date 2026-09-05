@@ -49,7 +49,7 @@ export default function ContactForm() {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        body: formData, // Posíláme jako FormData kvůli fotce
+        body: formData, 
       })
 
       if (response.ok) {
@@ -66,24 +66,35 @@ export default function ContactForm() {
     <section id="poptavka" className="py-24 px-4 sm:px-6 lg:px-8 bg-brand-bg relative border-t border-brand-silver/10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
         
-        {/* Levá část - beze změny textů, jen napojeno na mail klienta */}
         <div>
           <h2 className="text-sm font-bold text-brand-blue uppercase tracking-widest mb-2">Kontakt</h2>
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Pojďme váš projekt <br/> proměnit v realitu</h3>
           <p className="text-brand-silver/80 text-lg mb-10">Vyplňte formulář níže nebo nás kontaktujte napřímo. Ozveme se vám s nabídkou co nejdříve.</p>
 
-          <div className="space-y-6 mb-10">
+          <div className="space-y-8 mb-10">
             <div className="flex items-center gap-4 text-brand-silver">
-              <div className="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center border border-brand-silver/10"><Phone className="w-5 h-5 text-brand-blue" /></div>
+              <div className="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center border border-brand-silver/10 shrink-0"><Phone className="w-5 h-5 text-brand-blue" /></div>
               <div><p className="text-sm text-brand-silver/60">Zavolejte nám</p><p className="text-lg font-bold text-white">+420 608 084 721</p></div>
             </div>
+            
             <div className="flex items-center gap-4 text-brand-silver">
-              <div className="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center border border-brand-silver/10"><Mail className="w-5 h-5 text-brand-blue" /></div>
-              <div><p className="text-sm text-brand-silver/60">Napište nám</p><p className="text-lg font-bold text-white">Yurijstavgroup@gmail.com</p></div>
+              <div className="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center border border-brand-silver/10 shrink-0"><Mail className="w-5 h-5 text-brand-blue" /></div>
+              <div><p className="text-sm text-brand-silver/60">Napište nám</p><p className="text-lg font-bold text-white">info@yurijstavgroup.cz</p></div>
             </div>
-            <div className="flex items-center gap-4 text-brand-silver">
-              <div className="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center border border-brand-silver/10"><MapPin className="w-5 h-5 text-brand-blue" /></div>
-              <div><p className="text-sm text-brand-silver/60">Sídlo firmy</p><p className="text-lg font-bold text-white">Fryčovická 458, Praha - Letňany</p></div>
+            
+            {/* Upravená sekce s adresou a upozorněním */}
+            <div className="flex items-start gap-4 text-brand-silver">
+              <div className="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center border border-brand-silver/10 shrink-0 mt-1"><MapPin className="w-5 h-5 text-brand-blue" /></div>
+              <div>
+                <p className="text-sm text-brand-silver/60">Administrativní sídlo</p>
+                <p className="text-lg font-bold text-white mb-1">Fryčovická 458, Praha - Letňany</p>
+                <div className="bg-brand-blue/10 border border-brand-blue/20 rounded-md p-3 mt-3 max-w-sm">
+                  <p className="text-sm font-bold text-brand-blue mb-1">Působíme po celé ČR</p>
+                  <p className="text-xs text-brand-silver/80 leading-relaxed">
+                    Tato adresa slouží jako naše administrativní zázemí. Za vaším projektem s radostí přijedeme kamkoliv, kde nás budete potřebovat.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -140,7 +151,6 @@ export default function ContactForm() {
                   <FormItem><FormLabel className="text-brand-silver">Požadovaný termín realizace</FormLabel><FormControl><Input placeholder="Např. Jaro 2027, co nejdříve..." className="bg-brand-bg border-brand-silver/20 text-white" {...field} /></FormControl></FormItem>
                 )}/>
 
-                {/* Upload fotky */}
                 <div className="pt-2">
                   <FormLabel className="text-brand-silver block mb-2">Aktuální stav (nahrát fotku)</FormLabel>
                   <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-brand-silver/20 border-dashed rounded-lg cursor-pointer bg-brand-bg hover:bg-brand-silver/5 transition-colors">

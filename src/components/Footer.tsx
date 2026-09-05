@@ -44,7 +44,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 text-brand-blue mt-0.5 shrink-0" />
-                <span>Yurijstavgroup@gmail.com</span>
+                <span>info@yurijstavgroup.cz</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-brand-blue mt-0.5 shrink-0" />

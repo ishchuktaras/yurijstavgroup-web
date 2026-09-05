@@ -63,7 +63,7 @@ export default function RootLayout({
     "description": "Váš spolehlivý partner ve stavebnictví. Kompletní stavební práce, rekonstrukce, fasády a střechy.",
     "url": "https://www.yurijstavgroup.cz",
     "telephone": "+420608084721",
-    "email": "Yurijstavgroup@gmail.com",
+    "email": "info@yurijstavgroup.cz", // <-- ZDE JE ZMĚNĚNÝ E-MAIL
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Fryčovická 458",
@@ -88,7 +88,6 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-brand-bg text-foreground" suppressHydrationWarning>
         <Navigation />
-        {/* OPRAVA: Zde jsme smazali md:ml-64 */}
         <main className="flex-1">
           {children}
         </main>
