@@ -41,8 +41,8 @@ export async function POST(request: Request) {
     // Odeslání e-mailu
     await transporter.sendMail({
       from: `"Web Yurij Stav Group" <${process.env.SMTP_USER}>`, 
-      to: process.env.SMTP_USER, 
-      replyTo: email, 
+      to: 'poptavky@yurijstavgroup.cz', // CÍLOVÁ SCHRÁNKA PRO POPTÁVKY
+      replyTo: email, // Zákazníkův e-mail pro snadnou odpověď
       subject: `Nová poptávka: ${sluzba} - ${jmeno}`,
       html: `
         <h2>Nová poptávka z webu</h2>
@@ -60,7 +60,6 @@ export async function POST(request: Request) {
       `,
       attachments
     });
-
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('SMTP Error:', error);

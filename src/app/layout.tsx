@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 // 1. SEO a OpenGraph Metadata (Pro Google, Seznam, Facebook, X)
 export const metadata: Metadata = {
   title: {
-    default: "Yurij Stav Group | Spolehlivý partner ve stavebnictví",
+    default: "Yurij Stav Group s.r.o.| Spolehlivý partner ve stavebnictví",
     template: "%s | Yurij Stav Group s.r.o.",
   },
   description: "Kompletní stavební práce, rekonstrukce bytů a domů, zateplení fasád a realizace střech. Kvalita bez kompromisů a poctivé řemeslo.",
