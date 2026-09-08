@@ -15,6 +15,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 const formSchema = z.object({
   jmeno: z.string().min(2, { message: "Jméno musí mít alespoň 2 znaky." }),
+  email: z.string().email({ message: "Zadejte platný e-mail." }), // Přidaná validace e-mailu
   telefon: z.string().min(9, { message: "Zadejte platné telefonní číslo." }),
   adresa: z.string().min(5, { message: "Zadejte přesnou adresu realizace." }),
   sluzba: z.string().min(1, { message: "Vyberte typ práce." }),
@@ -30,7 +31,7 @@ export default function ContactForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      jmeno: "", telefon: "", adresa: "", sluzba: "", plocha: "", termin: "", zprava: "",
+      jmeno: "", email: "", telefon: "", adresa: "", sluzba: "", plocha: "", termin: "", zprava: "",
     },
   })
 
@@ -82,7 +83,6 @@ export default function ContactForm() {
               <div><p className="text-sm text-brand-silver/60">Napište nám</p><p className="text-lg font-bold text-white">info@yurijstavgroup.cz</p></div>
             </div>
             
-            {/* Upravená sekce s adresou a upozorněním */}
             <div className="flex items-start gap-4 text-brand-silver">
               <div className="w-12 h-12 rounded-full bg-brand-dark flex items-center justify-center border border-brand-silver/10 shrink-0 mt-1"><MapPin className="w-5 h-5 text-brand-blue" /></div>
               <div>
@@ -99,7 +99,6 @@ export default function ContactForm() {
           </div>
         </div>
 
-        {/* Pravá část - Nový formulář */}
         <div className="bg-brand-dark/50 border border-brand-silver/10 rounded-2xl p-8 backdrop-blur-sm">
           {status === 'success' ? (
             <div className="h-full flex flex-col items-center justify-center text-center space-y-4">
@@ -120,6 +119,11 @@ export default function ContactForm() {
                     <FormItem><FormLabel className="text-brand-silver">Telefon *</FormLabel><FormControl><Input className="bg-brand-bg border-brand-silver/20 text-white" {...field} /></FormControl><FormMessage className="text-red-400" /></FormItem>
                   )}/>
                 </div>
+
+                {/* Nové pole pro E-mail */}
+                <FormField control={form.control} name="email" render={({ field }) => (
+                  <FormItem><FormLabel className="text-brand-silver">E-mail *</FormLabel><FormControl><Input type="email" className="bg-brand-bg border-brand-silver/20 text-white" {...field} /></FormControl><FormMessage className="text-red-400" /></FormItem>
+                )}/>
 
                 <FormField control={form.control} name="adresa" render={({ field }) => (
                   <FormItem><FormLabel className="text-brand-silver">Přesná adresa realizace *</FormLabel><FormControl><Input className="bg-brand-bg border-brand-silver/20 text-white" {...field} /></FormControl><FormMessage className="text-red-400" /></FormItem>
