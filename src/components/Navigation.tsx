@@ -35,7 +35,7 @@ export default function Navigation() {
           </div>
           
           {/* Střední sloupec - Vycentrované odkazy (pouze desktop) */}
-          <nav className="hidden md:flex flex-[2] justify-center items-center space-x-8">
+          <nav className="hidden md:flex flex-2 justify-center items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}

@@ -46,7 +46,7 @@ export default function Services() {
           {services.map((service) => (
             <div key={service.id} id={service.id} className="group relative bg-brand-dark/50 border border-brand-silver/10 rounded-2xl p-8 hover:bg-brand-dark transition-all duration-300 hover:border-brand-blue/30 overflow-hidden flex flex-col">
               <div className="absolute -top-24 -right-24 w-48 h-48 bg-brand-blue/10 rounded-full blur-3xl group-hover:bg-brand-blue/20 transition-all duration-500 pointer-events-none" />
-              <div className="relative z-10 flex-grow">
+              <div className="relative z-10 grow">
                 <div className="w-14 h-14 bg-brand-bg border border-brand-silver/10 rounded-xl flex items-center justify-center mb-6 group-hover:border-brand-blue/30 transition-colors">
                   <service.icon className="w-7 h-7 text-brand-blue" />
                 </div>
