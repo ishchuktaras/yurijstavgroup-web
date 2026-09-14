@@ -43,8 +43,10 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "GeneralContractor",
     "name": "Yurij Stav Group s.r.o.",
+    "alternateName": ["Yurij Stav Group", "YSG Stavební firma"],
     "description": "Váš spolehlivý partner ve stavebnictví. Kompletní stavební práce, rekonstrukce, fasády a střechy.",
     "url": "https://www.yurijstavgroup.cz",
+    "logo": "https://www.yurijstavgroup.cz/logo.svg",
     "telephone": "+420608084721",
     "email": "info@yurijstavgroup.cz",
     "address": {
@@ -54,8 +56,29 @@ export default function RootLayout({
       "postalCode": "199 00",
       "addressCountry": "CZ"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 50.1342,
+      "longitude": 14.5221
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "Czech Republic" },
+      { "@type": "AdministrativeArea", "name": "Praha" }
+    ],
+    "priceRange": "$$",
+    "foundingDate": "2024",
     "vatID": "CZ24091812",
-    "taxID": "24091812"
+    "taxID": "24091812",
+    "knowsAbout": [
+      "Stavby na klíč",
+      "Rekonstrukce interiérů",
+      "Zateplování fasád ETICS",
+      "Střešní konstrukce a opravy"
+    ],
+    "sameAs": [
+      "https://www.facebook.com/yurijstavgroup",
+      "https://www.instagram.com/yurijstavgroup"
+    ]
   };
 
   return (
@@ -70,7 +93,6 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-brand-bg text-white font-sans selection:bg-brand-blue/30" suppressHydrationWarning>
-        {/* ZDE PŘIDÁN CHYBĚJÍCÍ OTEVÍRACÍ TAG */}
         <SmoothScrolling>
           <Navigation />
           <main className="flex-1">

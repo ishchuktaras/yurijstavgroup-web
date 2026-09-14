@@ -4,7 +4,8 @@
 import { useState, useEffect } from 'react'
 import { Menu, X, Users, ImageIcon, Wrench, MessageSquareQuote, Mail } from 'lucide-react'
 import Link from 'next/link'
-import AnimatedLogo from './AnimatedLogo' // <-- Importujeme naši novou dynamickou komponentu
+import { motion, AnimatePresence } from 'framer-motion'
+import AnimatedLogo from './AnimatedLogo'
 
 const navItems = [
   { name: 'O nás', href: '#o-nas', icon: Users },
@@ -49,7 +50,6 @@ export default function Navigation() {
                 className="flex items-center gap-2 text-brand-silver hover:text-white transition-colors group"
               >
                 <item.icon className="w-4 h-4 text-brand-blue group-hover:text-brand-blue-light transition-colors" />
-                
                 <span className="font-medium text-sm uppercase tracking-wider whitespace-nowrap">
                   {item.name}
                 </span>
@@ -62,50 +62,93 @@ export default function Navigation() {
             <div className="hidden md:block">
               <Link
                 href="#poptavka"
-                className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue-light rounded-lg transition-all hover:scale-105"
+                className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-brand-blue hover:bg-brand-blue-light rounded-lg transition-all hover:scale-105 shadow-lg shadow-brand-blue/20"
               >
                 Poptat služby
               </Link>
             </div>
 
-            <button 
+            {/* Animované tlačítko burgeru */}
+            <motion.button 
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden text-brand-silver hover:text-white p-2"
+              whileTap={{ scale: 0.9 }}
+              className="md:hidden text-brand-silver hover:text-white p-2 rounded-xl bg-brand-dark/50 border border-brand-silver/10 focus:outline-none"
+              aria-label="Menu"
             >
-              {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
-            </button>
+              <motion.div
+                animate={{ rotate: isOpen ? 90 : 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                {isOpen ? <X className="w-6 h-6 text-brand-blue" /> : <Menu className="w-6 h-6 text-brand-blue" />}
+              </motion.div>
+            </motion.button>
           </div>
 
         </div>
       </div>
 
-      {/* Mobilní rozbalovací menu */}
-      {isOpen && (
-        <div className="md:hidden bg-brand-bg/95 backdrop-blur-xl border-b border-brand-silver/10 shadow-2xl absolute w-full left-0 top-full">
-          <nav className="px-4 pt-2 pb-6 space-y-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 px-4 py-4 text-brand-silver hover:text-white hover:bg-brand-blue/10 rounded-lg transition-colors"
-              >
-                <item.icon className="w-5 h-5 text-brand-blue" />
-                <span className="font-medium">{item.name}</span>
-              </Link>
-            ))}
-            
-            <Link
-              href="#poptavka"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-4 py-4 text-brand-silver hover:text-white hover:bg-brand-blue/10 rounded-lg transition-colors"
+      {/* Mobilní rozbalovací menu s Framer Motion animacemi */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -15, height: 0 }}
+            animate={{ opacity: 1, y: 0, height: 'auto' }}
+            exit={{ opacity: 0, y: -15, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden bg-brand-bg/95 backdrop-blur-2xl border-b border-brand-silver/10 shadow-2xl absolute w-full left-0 top-full overflow-hidden"
+          >
+            <motion.nav 
+              initial="closed"
+              animate="open"
+              variants={{
+                open: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } },
+                closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
+              }}
+              className="px-6 py-6 space-y-3"
             >
-              <Mail className="w-5 h-5 text-brand-blue" />
-              <span className="font-medium">Kontakt</span>
-            </Link>
-          </nav>
-        </div>
-      )}
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  variants={{
+                    open: { opacity: 1, x: 0 },
+                    closed: { opacity: 0, x: -20 }
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-4 px-4 py-3.5 text-brand-silver hover:text-white hover:bg-brand-blue/10 rounded-2xl border border-transparent hover:border-brand-blue/20 transition-all text-lg font-medium"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-brand-dark flex items-center justify-center border border-brand-silver/10">
+                      <item.icon className="w-5 h-5 text-brand-blue" />
+                    </div>
+                    <span>{item.name}</span>
+                  </Link>
+                </motion.div>
+              ))}
+              
+              <motion.div
+                variants={{
+                  open: { opacity: 1, x: 0 },
+                  closed: { opacity: 0, x: -20 }
+                }}
+                transition={{ duration: 0.2 }}
+                className="pt-2"
+              >
+                <Link
+                  href="#poptavka"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center gap-2 w-full py-4 text-white bg-brand-blue hover:bg-brand-blue-light rounded-2xl font-bold shadow-lg shadow-brand-blue/20 transition-all"
+                >
+                  <Mail className="w-5 h-5" />
+                  <span>Poptat služby</span>
+                </Link>
+              </motion.div>
+            </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
