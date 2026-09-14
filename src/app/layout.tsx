@@ -24,9 +24,23 @@ export const metadata: Metadata = {
     type: "website",
     locale: "cs_CZ",
     url: "https://www.yurijstavgroup.cz",
-    title: "Yurij Stav Group | Stavební a rekonstrukční práce",
-    description: "Nabízíme kompletní stavební práce od menších rekonstrukcí až po realizaci staveb na klíč.",
+    title: "Yurij Stav Group | Spolehlivý partner ve stavebnictví",
+    description: "Kompletní stavební práce, rekonstrukce bytů a domů, zateplení fasád a realizace střech.",
     siteName: "Yurij Stav Group",
+    images: [
+      {
+        url: "https://www.yurijstavgroup.cz/og-image.jpg", 
+        width: 1200,
+        height: 630,
+        alt: "Yurij Stav Group - Stavební firma",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Yurij Stav Group | Spolehlivý partner ve stavebnictví",
+    description: "Kompletní stavební práce, rekonstrukce, fasády a střechy.",
+    images: ["https://www.yurijstavgroup.cz/og-image.jpg"],
   },
   robots: {
     index: true,
