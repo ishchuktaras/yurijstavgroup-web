@@ -1,3 +1,5 @@
+// src/app/obchodni-podminky/page.tsx
+
 export const metadata = {
   title: 'Obchodní podmínky',
 }

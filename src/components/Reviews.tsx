@@ -8,26 +8,41 @@ const reviews = [
 
 export default function Reviews() {
   return (
-    <section id="recenze" className="py-24 px-4 sm:px-6 lg:px-8 bg-brand-bg relative border-t border-brand-silver/10">
-      <div className="max-w-7xl mx-auto">
+    <section id="recenze" className="py-24 px-4 sm:px-6 lg:px-8 bg-brand-bg relative border-t border-brand-silver/10 overflow-hidden">
+      {/* Dekorativní záře v pozadí */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-blue/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm font-bold text-brand-blue uppercase tracking-widest mb-2">Recenze</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">Co o nás říkají klienti</h3>
+          <h3 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">Co o nás říkají klienti</h3>
           <p className="text-brand-silver/80 text-lg">Nejlepší vizitkou naší práce jsou spokojení zákazníci. Přečtěte si, jak hodnotí spolupráci s námi.</p>
         </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reviews.map((review) => (
-            <div key={review.id} className="bg-brand-dark/50 border border-brand-silver/10 rounded-2xl p-8 hover:border-brand-blue/30 transition-colors relative">
-              <Quote className="absolute top-6 right-6 w-10 h-10 text-brand-blue/10" />
-              <div className="flex gap-1 mb-6">
+            <div 
+              key={review.id} 
+              className="bg-brand-dark/40 backdrop-blur-md border border-brand-silver/10 rounded-3xl p-8 hover:border-brand-blue/30 hover:bg-brand-dark/80 transition-all duration-300 hover:-translate-y-1 relative flex flex-col"
+            >
+              <Quote className="absolute top-8 right-8 w-12 h-12 text-brand-blue/10 transform rotate-12" />
+              
+              <div className="flex gap-1 mb-8">
                 {[...Array(review.rating)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-brand-blue text-brand-blue" />
                 ))}
               </div>
-              <p className="text-brand-silver/90 italic leading-relaxed mb-8 relative z-10">&quot;{review.text}&quot;</p>
-              <div className="mt-auto border-t border-brand-silver/10 pt-4">
-                <p className="text-white font-bold">{review.name}</p>
-                <p className="text-brand-silver/60 text-sm">{review.project}</p>
+              
+              <p className="text-brand-silver/90 italic leading-relaxed mb-8 relative z-10 grow">&quot;{review.text}&quot;</p>
+              
+              <div className="mt-auto border-t border-brand-silver/10 pt-6 flex items-center">
+                <div className="w-10 h-10 rounded-full bg-brand-blue/20 flex items-center justify-center text-brand-blue font-bold mr-4">
+                  {review.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="text-white font-bold">{review.name}</p>
+                  <p className="text-brand-silver/60 text-sm font-medium">{review.project}</p>
+                </div>
               </div>
             </div>
           ))}

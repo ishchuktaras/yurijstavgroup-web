@@ -1,3 +1,5 @@
+// src/app/gdpr/page.tsx
+
 export const metadata = {
   title: 'Ochrana osobních údajů (GDPR)',
 }

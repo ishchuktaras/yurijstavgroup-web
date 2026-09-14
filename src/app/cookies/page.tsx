@@ -1,3 +1,5 @@
+// src/app/cookies/page.tsx
+
 export const metadata = {
   title: 'Zásady cookies',
 }

@@ -1,28 +1,19 @@
-// src/app/layout.tsx
-
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navigation from "@/components/Navigation"; 
 import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
+import SmoothScrolling from "@/components/SmoothScrolling";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+// Definice našich fontů místo původního Geist
+const inter = Inter({ subsets: ['latin', 'latin-ext'], variable: '--font-inter' });
+const montserrat = Montserrat({ subsets: ['latin', 'latin-ext'], variable: '--font-montserrat' });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-// 1. SEO a OpenGraph Metadata (Pro Google, Seznam, Facebook, X)
 export const metadata: Metadata = {
   title: {
-    default: "Yurij Stav Group s.r.o.| Spolehlivý partner ve stavebnictví",
+    default: "Yurij Stav Group s.r.o. | Spolehlivý partner ve stavebnictví",
     template: "%s | Yurij Stav Group s.r.o.",
   },
   description: "Kompletní stavební práce, rekonstrukce bytů a domů, zateplení fasád a realizace střech. Kvalita bez kompromisů a poctivé řemeslo.",
@@ -40,13 +31,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
 };
 
@@ -55,7 +39,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // 2. GEO: Strukturovaná data pro AI vyhledávače a LLM (Schema.org)
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "GeneralContractor",
@@ -63,7 +46,7 @@ export default function RootLayout({
     "description": "Váš spolehlivý partner ve stavebnictví. Kompletní stavební práce, rekonstrukce, fasády a střechy.",
     "url": "https://www.yurijstavgroup.cz",
     "telephone": "+420608084721",
-    "email": "info@yurijstavgroup.cz", // <-- ZDE JE ZMĚNĚNÝ E-MAIL
+    "email": "info@yurijstavgroup.cz",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Fryčovická 458",
@@ -78,7 +61,7 @@ export default function RootLayout({
   return (
     <html
       lang="cs" 
-      className={cn("h-full", "antialiased", "scroll-smooth", geistSans.variable, geistMono.variable, inter.variable)}
+      className={cn("h-full", "antialiased", "scroll-smooth", inter.variable, montserrat.variable)}
     >
       <head>
         <script
@@ -86,12 +69,16 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-brand-bg text-foreground" suppressHydrationWarning>
-        <Navigation />
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer />     
+      <body className="min-h-full flex flex-col bg-brand-bg text-white font-sans selection:bg-brand-blue/30" suppressHydrationWarning>
+        {/* ZDE PŘIDÁN CHYBĚJÍCÍ OTEVÍRACÍ TAG */}
+        <SmoothScrolling>
+          <Navigation />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <CookieBanner /> 
+        </SmoothScrolling>   
       </body>
     </html>
   );
