@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Yurij Stav Group",
     images: [
       {
-        url: "https://www.yurijstavgroup.cz/og-image.jpg", 
+        url: "https://www.yurijstavgroup.cz/og-image.jpeg", 
         width: 1200,
         height: 630,
         alt: "Yurij Stav Group - Stavební firma",
