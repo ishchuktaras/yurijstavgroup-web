@@ -52,7 +52,7 @@ export default function About() {
               {/* Fotka ilustrující práci */}
               <div className="relative h-64 w-full rounded-2xl overflow-hidden mb-8">
                 <Image 
-                  src="/og-image.jpg" 
+                  src="/o-nas.jpeg" 
                   alt="Tým Yurij Stav Group při práci"
                   fill
                   className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
