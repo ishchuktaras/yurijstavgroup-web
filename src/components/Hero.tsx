@@ -22,9 +22,9 @@ export default function Hero() {
       <div className="relative z-10 max-w-4xl mx-auto text-center mt-[-5vh]">
         {/* Přidán font-heading pro lepší vizuální dopad nadpisu */}
         <h1 className="text-5xl md:text-7xl font-heading font-extrabold text-white tracking-tight mb-8 drop-shadow-lg">
-          Váš spolehlivý partner <br className="hidden sm:block" />
+          Stavíme vaši <br className="hidden sm:block" />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-blue-light">
-            ve stavebnictví
+            budoucnost
           </span>
         </h1>
         
