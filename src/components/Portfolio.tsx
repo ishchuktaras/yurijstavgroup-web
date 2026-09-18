@@ -48,7 +48,9 @@ const projects = [
       { src: "/portfolio/vysocina-fasada-13.jpg", alt: "Realizace fasády Vysočina - fáze 13" },
       { src: "/portfolio/vysocina-fasada-14.jpg", alt: "Realizace fasády Vysočina - fáze 14" },
       { src: "/portfolio/vysocina-fasada-15.jpg", alt: "Realizace fasády Vysočina - fáze 15" },
-      { src: "/portfolio/vysocina-fasada-16.jpg", alt: "Realizace fasády Vysočina - fáze 16" }
+      { src: "/portfolio/vysocina-fasada-16.jpg", alt: "Realizace fasády Vysočina - fáze 16" },
+      { src: "/portfolio/vysocina-fasada-17.jpg", alt: "Realizace fasády Vysočina - fáze 17" },
+      { src: "/portfolio/vysocina-fasada-18.jpg", alt: "Realizace fasády Vysočina - fáze 18" }
     ],
     isPlaceholder: false,
   },
