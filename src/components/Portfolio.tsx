@@ -19,7 +19,7 @@ const projects = [
     title: "Rekonstrukce fasády",
     location: "Jihlava, kraj Vysočina",
     coverImage: "/portfolio/fasada-1.jpeg",
-       images: Array.from({ length: 16 }).map((_, i) => ({
+    images: Array.from({ length: 16 }).map((_, i) => ({
       src: `/portfolio/fasada-${i + 1}.jpeg`,
       alt: `Fasáda Jihlava - detail ${i + 1}`,
     })),
@@ -32,26 +32,14 @@ const projects = [
     location: "Kraj Vysočina",
     description: "Zateplení novostavby rodinného domu, natažení stěrky s perlinkou a aplikace finální silikonové omítky. Čistý bílý design elegantně kontrastuje s tmavými rámy oken a falcovou střechou.",
     coverImage: "/portfolio/vysocina-fasada-16.jpg",
-    images: [
-      { src: "/portfolio/vysocina-fasada-01.jpg", alt: "Realizace fasády Vysočina - fáze 1" },
-      { src: "/portfolio/vysocina-fasada-02.jpg", alt: "Realizace fasády Vysočina - fáze 2" },
-      { src: "/portfolio/vysocina-fasada-03.jpg", alt: "Realizace fasády Vysočina - fáze 3" },
-      { src: "/portfolio/vysocina-fasada-04.jpg", alt: "Realizace fasády Vysočina - fáze 4" },
-      { src: "/portfolio/vysocina-fasada-05.jpg", alt: "Realizace fasády Vysočina - fáze 5" },
-      { src: "/portfolio/vysocina-fasada-06.jpg", alt: "Realizace fasády Vysočina - fáze 6" },
-      { src: "/portfolio/vysocina-fasada-07.jpg", alt: "Realizace fasády Vysočina - fáze 7" },
-      { src: "/portfolio/vysocina-fasada-08.jpg", alt: "Realizace fasády Vysočina - fáze 8" },
-      { src: "/portfolio/vysocina-fasada-09.jpg", alt: "Realizace fasády Vysočina - fáze 9" },
-      { src: "/portfolio/vysocina-fasada-10.jpg", alt: "Realizace fasády Vysočina - fáze 10" },
-      { src: "/portfolio/vysocina-fasada-11.jpg", alt: "Realizace fasády Vysočina - fáze 11" },
-      { src: "/portfolio/vysocina-fasada-12.jpg", alt: "Realizace fasády Vysočina - fáze 12" },
-      { src: "/portfolio/vysocina-fasada-13.jpg", alt: "Realizace fasády Vysočina - fáze 13" },
-      { src: "/portfolio/vysocina-fasada-14.jpg", alt: "Realizace fasády Vysočina - fáze 14" },
-      { src: "/portfolio/vysocina-fasada-15.jpg", alt: "Realizace fasády Vysočina - fáze 15" },
-      { src: "/portfolio/vysocina-fasada-16.jpg", alt: "Realizace fasády Vysočina - fáze 16" },
-      { src: "/portfolio/vysocina-fasada-17.jpg", alt: "Realizace fasády Vysočina - fáze 17" },
-      { src: "/portfolio/vysocina-fasada-18.jpg", alt: "Realizace fasády Vysočina - fáze 18" }
-    ],
+    // Dynamické generování 18 fotek s přidáním nuly pro čísla 01-09
+    images: Array.from({ length: 18 }).map((_, i) => {
+      const num = String(i + 1).padStart(2, '0');
+      return {
+        src: `/portfolio/vysocina-fasada-${num}.jpg`,
+        alt: `Realizace fasády Vysočina - fáze ${i + 1}`
+      };
+    }),
     isPlaceholder: false,
   },
   {
